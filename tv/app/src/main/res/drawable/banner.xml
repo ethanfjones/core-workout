@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The TV banner: a stick figure holding a forearm plank on a mat. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp" android:height="180dp"
+    android:viewportWidth="320" android:viewportHeight="180">
+    <path android:fillColor="#FF0E1116" android:pathData="M0,0h320v180h-320z" />
+    <path android:fillColor="#FF3DDC97" android:pathData="M40,138h240v8h-240z" />
+    <path android:strokeColor="#FFE8EDF3" android:strokeWidth="9" android:strokeLineCap="round"
+        android:strokeLineJoin="round" android:fillColor="#00000000"
+        android:pathData="M88,98L170,114L252,132M88,98L88,134L60,134" />
+    <path android:fillColor="#FFE8EDF3" android:pathData="M70,92m-13,0a13,13 0,1 1,26 0a13,13 0,1 1,-26 0" />
+</vector>

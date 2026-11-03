@@ -1,0 +1,43 @@
+plugins {
+    id 'com.android.application'
+}
+
+// The web app (../../index.html) is bundled as an asset, so the TV still works when the site is unreachable.
+def webDir = layout.buildDirectory.dir('generated/web')
+def copyWeb = tasks.register('copyWeb', Copy) {
+    from rootProject.file('../index.html')
+    into webDir
+}
+
+android {
+    namespace 'io.github.ethanfjones.coreworkout'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'io.github.ethanfjones.coreworkout'
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName '1.0'
+    }
+
+    sourceSets {
+        main.assets.srcDirs += webDir
+    }
+
+    buildTypes {
+        release {
+            // Not minified: the WebView's JavaScript bridge methods must keep their names.
+            minifyEnabled false
+            // Sideloaded over ADB like the CleanYourTV add-ons: signed with the debug key.
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+tasks.named('preBuild') { dependsOn copyWeb }

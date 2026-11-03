@@ -9,3 +9,11 @@ anti-lateral-flexion, hip/glute, and a short finisher. One self-contained `index
 - Recent sessions are kept in the browser's local storage so consecutive days don't repeat.
 
 Open `index.html` in any browser, or use the hosted copy on GitHub Pages.
+
+## Android TV app
+
+`tv/` is a small Android TV app that opens the page full-screen, uses the TV's text-to-speech for voice
+cues, keeps the screen on, and falls back to a bundled copy of `index.html` when offline. It declares a
+[CleanYourTV](https://github.com/Gathin23/cleanyourtv) module card, so it shows as a tile on that launcher.
+
+Build with JDK 17 and Android SDK 34: `cd tv && ./gradlew assembleRelease`.

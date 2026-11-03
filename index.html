@@ -100,6 +100,25 @@ body[data-paused=true] #setTime{opacity:.45}
 #done .big{font-size:4rem;margin:0}
 #done p{color:var(--muted)}
 #done .btn{width:100%;margin-top:12px}
+/* ---------- remote control focus ---------- */
+:focus{outline:none}
+:focus-visible{outline:3px solid var(--ready);outline-offset:3px}
+
+/* ---------- wide screens (TV, phone on its side): diagram left, timer right ---------- */
+@media (orientation: landscape) and (min-width: 700px){
+  .app{max-width:1200px}
+  .list{display:grid;grid-template-columns:1fr 1fr}
+  #run{display:grid;grid-template-columns:1.25fr 1fr;column-gap:24px;row-gap:6px;
+    grid-template-areas:"top top" "prog prog" "fig phase" "fig nm" "fig q" "fig side" "fig timer" "fig next" "fig ctrl" "fig tog";
+    grid-template-rows:auto auto 1fr auto auto auto auto auto auto 1fr}
+  .top{grid-area:top}.prog{grid-area:prog}.figwrap{grid-area:fig}.nm{grid-area:nm}
+  .q{grid-area:q;min-height:0}.timer{grid-area:timer}.next{grid-area:next}.ctrl{grid-area:ctrl}
+  .phase{grid-area:phase;align-self:end;justify-self:center}
+  .side{grid-area:side;justify-self:center}
+  .tog{grid-area:tog;align-self:start}
+  .figwrap svg{max-height:none}
+  #setTime{font-size:min(14vw,9rem)}
+}
 svg .body,svg .far{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:6}
 svg .body{stroke:var(--fig)}svg .far{stroke:var(--fig-far)}
 svg .head{fill:var(--fig)}svg .floor{stroke:var(--line);stroke-width:2}
@@ -488,10 +507,14 @@ function beep(freq, dur=.15, vol=.35, when=0){
   g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(vol,t+.01); g.gain.exponentialRampToValueAtTime(.001,t+dur);
   o.connect(g).connect(actx.destination); o.start(t); o.stop(t+dur+.02);
 }
+// The Android TV app provides AndroidTTS, since its WebView has no speechSynthesis
 function say(txt){
-  if(!prefs.voice || !('speechSynthesis' in window)) return;
+  if(!prefs.voice) return;
+  if(window.AndroidTTS){ try { AndroidTTS.speak(txt); } catch(e){} return; }
+  if(!('speechSynthesis' in window)) return;
   try { speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(txt); u.rate=1.05; speechSynthesis.speak(u); } catch(e){}
 }
+function hush(){ try { window.AndroidTTS ? AndroidTTS.stop() : speechSynthesis.cancel(); } catch(e){} }
 const buzz = p => { try { navigator.vibrate && navigator.vibrate(p); } catch(e){} };
 let wake = null;
 async function lockScreen(){ try { if('wakeLock' in navigator) wake = await navigator.wakeLock.request('screen'); } catch(e){} }
@@ -502,7 +525,7 @@ function syncToggles(){
   $('tSound').setAttribute('aria-pressed',prefs.sound); $('tVoice').setAttribute('aria-pressed',prefs.voice);
 }
 $('tSound').onclick=()=>{ prefs.sound=!prefs.sound; store.set('runnerCore.sound',prefs.sound?'1':'0'); syncToggles(); };
-$('tVoice').onclick=()=>{ prefs.voice=!prefs.voice; store.set('runnerCore.voice',prefs.voice?'1':'0'); if(!prefs.voice) try{speechSynthesis.cancel()}catch(e){} syncToggles(); };
+$('tVoice').onclick=()=>{ prefs.voice=!prefs.voice; store.set('runnerCore.voice',prefs.voice?'1':'0'); if(!prefs.voice) hush(); syncToggles(); };
 
 // ---------- workout runner ----------
 const READY_SECS = 10;
@@ -527,7 +550,7 @@ function startWorkout(){
   $('setup').hidden=true; $('dock').hidden=true; $('done').hidden=true; $('run').hidden=false;
   $('prog').innerHTML=s.blocks.map(()=>'<i></i>').join('');
   document.body.dataset.paused='false'; $('bPause').textContent='Pause';
-  syncToggles(); lockScreen(); onSegStart(); renderRun();
+  syncToggles(); lockScreen(); onSegStart(); renderRun(); $('bPause').focus();
   clearInterval(R.timer); R.timer=setInterval(tick,100);
 }
 
@@ -595,11 +618,12 @@ function finish(){
   const s=R.session;
   $('doneTxt').textContent=`${s.blocks.length} sets · ${fmt(s.total)} · ${LEVEL_LABEL[s.level]}. Logged — tomorrow's session will steer away from these exercises.`;
   $('run').hidden=true; $('done').hidden=false; document.body.dataset.phase='ready';
+  $('again').focus();
 }
 function backToSetup(){
-  R.active=false; clearInterval(R.timer); unlockScreen(); try{speechSynthesis.cancel()}catch(e){}
+  R.active=false; clearInterval(R.timer); unlockScreen(); hush();
   $('run').hidden=true; $('done').hidden=true; $('setup').hidden=false; $('dock').hidden=false;
-  document.body.dataset.phase='ready'; Fig.ex=null; newSession();
+  document.body.dataset.phase='ready'; Fig.ex=null; newSession(); $('start').focus();
 }
 
 $('start').onclick=startWorkout;
@@ -608,7 +632,7 @@ $('bStop').onclick=()=>{ if(confirm('End this workout?')) backToSetup(); };
 $('bPause').onclick=()=>{
   R.paused=!R.paused; R.last=performance.now();
   $('bPause').textContent=R.paused?'Resume':'Pause'; document.body.dataset.paused=R.paused;
-  if(R.paused){ try{speechSynthesis.cancel()}catch(e){} unlockScreen(); } else lockScreen();
+  if(R.paused){ hush(); unlockScreen(); } else lockScreen();
 };
 $('bSkip').onclick=()=>{
   if(!R.active) return;
@@ -620,9 +644,22 @@ $('bBack').onclick=()=>{
   if(R.el>3000 || R.i<=1) R.el=0; else { R.i--; R.el=0; }
   onSegStart(); renderRun();
 };
-document.addEventListener('keydown',e=>{ if(e.code==='Space' && R.active){ e.preventDefault(); $('bPause').click(); } });
+// Keyboard and TV remote media keys
+document.addEventListener('keydown',e=>{
+  if(!R.active) return;
+  if(e.code==='Space' || e.key==='MediaPlayPause' || e.key==='MediaPlay' || e.key==='MediaPause'){ e.preventDefault(); $('bPause').click(); }
+  else if(e.key==='MediaTrackNext' || e.key==='MediaFastForward') $('bSkip').click();
+  else if(e.key==='MediaTrackPrevious' || e.key==='MediaRewind') $('bBack').click();
+});
+// Called by the TV app's Back button; true means the page handled it
+window.onTvBack = () => {
+  if(R.active){ $('bStop').click(); return true; }
+  if(!$('done').hidden){ backToSetup(); return true; }
+  return false;
+};
 
 newSession();
+$('start').focus({preventScroll:true});
 </script>
 </body>
 </html>
