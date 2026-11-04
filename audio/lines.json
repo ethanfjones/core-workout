@@ -1,0 +1,1034 @@
+{
+ "c-abduct": {
+  "text": "Toes pointing forward. Lift the top leg from the hip, not the waist.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-airplane": {
+  "text": "Balancing in a hinge, slowly open the pelvis to the side and close it.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-ankle": {
+  "text": "Drive the knee toward the wall over your toes. Heel stays down.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-askip": {
+  "text": "Tall posture, drive the knee up, quick foot strike under the hip.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-bear": {
+  "text": "Knees an inch off the floor, back flat, breathing steady.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-bearreach": {
+  "text": "Knees hovering, reach one arm forward without shifting your hips.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-beartap": {
+  "text": "Stay in the bear position. Tap shoulders without hips moving.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-birddog": {
+  "text": "Reach long, not high. Imagine a cup of water on your low back.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-birdhold": {
+  "text": "Opposite arm and leg out, hold 3 seconds, hips square to the floor.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-bridge": {
+  "text": "Drive through heels. Squeeze at the top, ribs down, do not arch.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-butterfly": {
+  "text": "Soles together, sit tall, let the knees fall open. No bouncing.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-calfbent": {
+  "text": "Same stance, now bend the back knee with the heel down. Feel it low in the calf.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-calfstraight": {
+  "text": "Hands on the wall, back leg straight, heel down, lean in until you feel the calf.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-catcow": {
+  "text": "Slowly round and arch your spine, moving with your breath.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-child": {
+  "text": "Hips back to your heels, arms long, breathe into your low back.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-circles": {
+  "text": "Draw small circles with your forearms. Hips stay still and level.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-clam": {
+  "text": "Feet together, hips stacked. Open the top knee without rolling back.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-couch": {
+  "text": "Back knee at the couch, shin up the front, squeeze the glute and stay tall.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-dblift": {
+  "text": "Lie on your side, lift both legs together, pause, ribs down.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-deadbug": {
+  "text": "Ribs down, low back flat. Lower the opposite arm and leg slowly.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-fig4": {
+  "text": "Ankle across the opposite knee, pull both legs toward your chest.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-hamchair": {
+  "text": "Heel on the chair, leg straight, hinge forward from the hips with a flat back.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-hamsupine": {
+  "text": "On your back, hold behind the thigh and straighten the leg toward the ceiling.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-heeltap": {
+  "text": "Knees stay at 90 degrees. Tap one heel down without your back arching.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-hipcircle": {
+  "text": "Hand on the wall, draw big slow circles with your knee.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-hipflexor": {
+  "text": "Tuck the pelvis under and shift forward until the front of the hip opens.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-hollow": {
+  "text": "Low back glued to the floor. Bend knees or arms to sides if it lifts.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-hydrant": {
+  "text": "Keep your spine still. Lift the knee out to the side from the hip.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-inchworm": {
+  "text": "Walk your hands out to a plank and back, legs as straight as is comfortable.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-jacks": {
+  "text": "Jump your feet wide and narrow, shoulders still over your hands.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-kneedrive": {
+  "text": "In a side plank, drive the top knee forward without your hips dropping.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-latlunge": {
+  "text": "Sit back into one hip, other leg straight, chest up.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-leglift": {
+  "text": "Lift one foot a few inches and hold. Hips level and square.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-longlever": {
+  "text": "Elbows ahead of your shoulders. Hold without letting hips sag.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-march": {
+  "text": "Hold the bridge. Lift one foot at a time, hips level, no twisting.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-mc": {
+  "text": "Hands under shoulders. Drive each knee toward chest, flat back.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-mcfast": {
+  "text": "Hips low, quick feet. Stay light and rhythmic.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-ninety": {
+  "text": "Both knees bent at 90 degrees, sit tall and lean gently over the front shin.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-pigeon": {
+  "text": "Front shin across, back leg long, fold forward and let the hip sink.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-plank": {
+  "text": "Squeeze glutes, ribs toward hips, straight line from ear to ankle.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-pogo": {
+  "text": "Small quick bounces off the balls of your feet, knees soft.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-quad": {
+  "text": "Hold your foot behind you, knees together, tuck the pelvis under.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-rdl": {
+  "text": "Hinge on one leg, hips square, back flat, and hold your balance.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-reach": {
+  "text": "Slowly reach one arm forward and hold it. Do not let hips rotate.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-reverse": {
+  "text": "Hands behind you, lift your hips to a straight line, squeeze glutes.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-revlunge": {
+  "text": "Step back, reach both arms up, feel the front of the hip open.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-rkc": {
+  "text": "Max tension: squeeze fists, glutes and quads, pull elbows toward toes.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-rocks": {
+  "text": "Hold the hollow shape and rock gently. The shape never breaks.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-saw": {
+  "text": "Rock forward and back an inch. Move from the shoulders, not the hips.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-slbridge": {
+  "text": "Keep hips level. Drive through the heel of the working leg.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-sldb": {
+  "text": "Legs straight, lower one heel slowly. Low back never leaves the floor.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-slhold": {
+  "text": "Bridge up on one leg and hold, hips level.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-slowdb": {
+  "text": "4 seconds out, 4 seconds back. Do not let your ribs flare.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-sp": {
+  "text": "Straight line head to heels. Hips do not sag or roll forward.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-sph": {
+  "text": "Wrist under shoulder. Lift tall through the hips.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-spider": {
+  "text": "Bring a knee toward the same-side elbow. Hips stay low.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-spk": {
+  "text": "Stack shoulders, hips, knees. Push the floor away and lift your hips.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-splift": {
+  "text": "Hold the plank, lift the top leg to hip height, hips stacked.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-spliftlow": {
+  "text": "Slowly lift and lower the top leg. Pelvis does not dip.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-star": {
+  "text": "On your hand, top arm and leg lifted wide. Hold everything in one plane.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-straddle": {
+  "text": "Legs wide, toes up, walk your hands forward with a long spine.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-swingfb": {
+  "text": "Hand on the wall, swing from the hip, trunk tall.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-swingside": {
+  "text": "Face the wall, swing the leg across your body and out.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-taps": {
+  "text": "Feet close. Hips stay still as a hand taps the opposite shoulder.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-trot": {
+  "text": "Slowly rotate to a side plank and back. Trunk moves as one piece.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-twist": {
+  "text": "Knee across your body to the floor, shoulders stay down, look the other way.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-twopoint": {
+  "text": "High plank, lift the opposite arm and leg and hold. Hips square.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-wgs": {
+  "text": "Lunge, elbow to instep, then rotate and reach to the ceiling.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "c-widetaps": {
+  "text": "Feet wide for stability. Tap each shoulder without hips swaying.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-10": {
+  "text": "10 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-10-each": {
+  "text": "10 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-11": {
+  "text": "11 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-11-each": {
+  "text": "11 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-12": {
+  "text": "12 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-12-each": {
+  "text": "12 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-13": {
+  "text": "13 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-13-each": {
+  "text": "13 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-14": {
+  "text": "14 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-14-each": {
+  "text": "14 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-15": {
+  "text": "15 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-15-each": {
+  "text": "15 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-16": {
+  "text": "16 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-16-each": {
+  "text": "16 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-17": {
+  "text": "17 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-17-each": {
+  "text": "17 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-18": {
+  "text": "18 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-18-each": {
+  "text": "18 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-19": {
+  "text": "19 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-19-each": {
+  "text": "19 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-20": {
+  "text": "20 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-20-each": {
+  "text": "20 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-21": {
+  "text": "21 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-21-each": {
+  "text": "21 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-22": {
+  "text": "22 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-22-each": {
+  "text": "22 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-23": {
+  "text": "23 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-23-each": {
+  "text": "23 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-24": {
+  "text": "24 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-24-each": {
+  "text": "24 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-25": {
+  "text": "25 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-25-each": {
+  "text": "25 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-26": {
+  "text": "26 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-26-each": {
+  "text": "26 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-27": {
+  "text": "27 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-27-each": {
+  "text": "27 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-28": {
+  "text": "28 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-28-each": {
+  "text": "28 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-29": {
+  "text": "29 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-29-each": {
+  "text": "29 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-30": {
+  "text": "30 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-30-each": {
+  "text": "30 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-31": {
+  "text": "31 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-31-each": {
+  "text": "31 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-32": {
+  "text": "32 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-32-each": {
+  "text": "32 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-33": {
+  "text": "33 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-33-each": {
+  "text": "33 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-34": {
+  "text": "34 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-34-each": {
+  "text": "34 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-35": {
+  "text": "35 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-35-each": {
+  "text": "35 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-36": {
+  "text": "36 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-36-each": {
+  "text": "36 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-37": {
+  "text": "37 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-37-each": {
+  "text": "37 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-38": {
+  "text": "38 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-38-each": {
+  "text": "38 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-39": {
+  "text": "39 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-39-each": {
+  "text": "39 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-40": {
+  "text": "40 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-40-each": {
+  "text": "40 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-41": {
+  "text": "41 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-42": {
+  "text": "42 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-43": {
+  "text": "43 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-44": {
+  "text": "44 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-45": {
+  "text": "45 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-46": {
+  "text": "46 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-47": {
+  "text": "47 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-48": {
+  "text": "48 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-49": {
+  "text": "49 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-5": {
+  "text": "5 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-5-each": {
+  "text": "5 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-50": {
+  "text": "50 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-51": {
+  "text": "51 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-52": {
+  "text": "52 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-53": {
+  "text": "53 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-54": {
+  "text": "54 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-55": {
+  "text": "55 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-56": {
+  "text": "56 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-57": {
+  "text": "57 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-58": {
+  "text": "58 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-59": {
+  "text": "59 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-6": {
+  "text": "6 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-6-each": {
+  "text": "6 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-60": {
+  "text": "60 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-61": {
+  "text": "61 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-62": {
+  "text": "62 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-63": {
+  "text": "63 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-64": {
+  "text": "64 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-65": {
+  "text": "65 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-66": {
+  "text": "66 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-67": {
+  "text": "67 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-68": {
+  "text": "68 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-69": {
+  "text": "69 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-7": {
+  "text": "7 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-7-each": {
+  "text": "7 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-70": {
+  "text": "70 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-71": {
+  "text": "71 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-72": {
+  "text": "72 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-73": {
+  "text": "73 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-74": {
+  "text": "74 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-75": {
+  "text": "75 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-8": {
+  "text": "8 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-8-each": {
+  "text": "8 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-9": {
+  "text": "9 seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "d-9-each": {
+  "text": "9 seconds each side.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-abduct": {
+  "text": "Next up: Side-lying hip abduction.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-airplane": {
+  "text": "Next up: Hip airplane.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-ankle": {
+  "text": "Next up: Knee-to-wall ankle rocks.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-askip": {
+  "text": "Next up: A march, building to A skips.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-bear": {
+  "text": "Next up: Bear hold.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-bearreach": {
+  "text": "Next up: Bear reach.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-beartap": {
+  "text": "Next up: Bear hold shoulder taps.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-birddog": {
+  "text": "Next up: Bird dog.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-birdhold": {
+  "text": "Next up: Bird dog hold.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-bridge": {
+  "text": "Next up: Glute bridge.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-butterfly": {
+  "text": "Next up: Butterfly stretch.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-calfbent": {
+  "text": "Next up: wall calf stretch, back knee bent.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-calfstraight": {
+  "text": "Next up: wall calf stretch, back knee straight.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-catcow": {
+  "text": "Next up: Cat-cow.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-child": {
+  "text": "Next up: child's pose.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-circles": {
+  "text": "Next up: Plank circles.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-clam": {
+  "text": "Next up: Clamshell.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-couch": {
+  "text": "Next up: Couch stretch.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-dblift": {
+  "text": "Next up: Side-lying double leg lift.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-deadbug": {
+  "text": "Next up: Dead bug.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-fig4": {
+  "text": "Next up: figure four stretch.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-hamchair": {
+  "text": "Next up: Elevated hamstring stretch.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-hamsupine": {
+  "text": "Next up: Lying hamstring stretch.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-heeltap": {
+  "text": "Next up: Dead bug heel taps.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-hipcircle": {
+  "text": "Next up: Standing hip circles.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-hipflexor": {
+  "text": "Next up: Half-kneeling hip flexor stretch.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-hollow": {
+  "text": "Next up: Hollow hold.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-hydrant": {
+  "text": "Next up: Fire hydrant.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-inchworm": {
+  "text": "Next up: Inchworm.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-jacks": {
+  "text": "Next up: Plank jacks.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-kneedrive": {
+  "text": "Next up: Side plank knee drive.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-latlunge": {
+  "text": "Next up: Lateral lunge.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-leglift": {
+  "text": "Next up: Plank leg lift hold.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-longlever": {
+  "text": "Next up: Long-lever plank.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-march": {
+  "text": "Next up: Bridge march.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-mc": {
+  "text": "Next up: Mountain climbers.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-mcfast": {
+  "text": "Next up: Mountain climbers.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-ninety": {
+  "text": "Next up: ninety ninety hip stretch.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-pigeon": {
+  "text": "Next up: Pigeon stretch.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-plank": {
+  "text": "Next up: Forearm plank.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-pogo": {
+  "text": "Next up: Pogo hops.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-quad": {
+  "text": "Next up: Standing quad stretch.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-rdl": {
+  "text": "Next up: Single-leg RDL hold.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-reach": {
+  "text": "Next up: Plank reach-outs.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-reverse": {
+  "text": "Next up: Reverse plank.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-revlunge": {
+  "text": "Next up: reverse lunge with an overhead reach.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-rkc": {
+  "text": "Next up: RKC plank.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-rocks": {
+  "text": "Next up: Hollow rocks.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-saw": {
+  "text": "Next up: Plank body saw.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-slbridge": {
+  "text": "Next up: Single-leg bridge.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-sldb": {
+  "text": "Next up: Straight-leg dead bug.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-slhold": {
+  "text": "Next up: Single-leg bridge hold.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-slowdb": {
+  "text": "Next up: Slow dead bug.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-sp": {
+  "text": "Next up: Side plank.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-sph": {
+  "text": "Next up: Side plank on hand.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-spider": {
+  "text": "Next up: Spiderman plank.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-spk": {
+  "text": "Next up: Side plank, knees bent.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-splift": {
+  "text": "Next up: Side plank with top-leg lift.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-spliftlow": {
+  "text": "Next up: Side plank, leg lift and lower.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-star": {
+  "text": "Next up: Side plank star.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-straddle": {
+  "text": "Next up: Wide-leg seated stretch.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-swingfb": {
+  "text": "Next up: Front-to-back leg swings.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-swingside": {
+  "text": "Next up: Side-to-side leg swings.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-taps": {
+  "text": "Next up: Plank shoulder taps.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-trot": {
+  "text": "Next up: Plank T-rotation.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-twist": {
+  "text": "Next up: Lying spinal twist.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-twopoint": {
+  "text": "Next up: Two-point plank.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-wgs": {
+  "text": "Next up: world's greatest stretch.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "n-widetaps": {
+  "text": "Next up: Wide-foot shoulder taps.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "p-1": {
+  "text": "One.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "p-2": {
+  "text": "Two.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "p-3": {
+  "text": "Three.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "p-done-cooldown": {
+  "text": "All done. Nice work today.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "p-done-core": {
+  "text": "Workout complete. Nice work.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "p-done-warmup": {
+  "text": "Warm-up done. Have a good run.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "p-get-ready": {
+  "text": "Get ready.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "p-halfway": {
+  "text": "Halfway.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "p-last": {
+  "text": "Last one.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "p-rest": {
+  "text": "Rest.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "p-sample": {
+  "text": "Right then. This is your coach. Let us get to work.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "p-switch": {
+  "text": "Switch sides.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ },
+ "p-ten": {
+  "text": "Ten seconds.",
+  "voice": "[{\"bm_george\": 0.6, \"bm_lewis\": 0.4}, 0.9, \"en-gb\"]"
+ }
+}

@@ -1,14 +1,29 @@
-# Runner core · 10 min
+# Runner training
 
-A randomized 10-minute bodyweight core workout for runners: anti-extension, anti-rotation,
-anti-lateral-flexion, hip/glute, and a short finisher. One self-contained `index.html`, no build step.
+Bodyweight sessions for a runner, from one self-contained `index.html` with no build step:
 
-- Easy / moderate / hard change exercise selection and work-to-rest ratio (1:1, 2:1, 3:1).
-- Mix of 60s holds and shorter sets, totaling about 10:00 including rest.
-- Hands-free timer with beeps, voice cues, side-switch prompts, and stick-figure diagrams.
-- Recent sessions are kept in the browser's local storage so consecutive days don't repeat.
+- **Pre-run warm-up** (5 min): dynamic mobility and running drills.
+- **Core workout** (5, 10 or 15 min): randomized anti-extension, anti-rotation, anti-lateral-flexion,
+  hip/glute and a finisher. Easy / moderate / hard change exercise selection and work-to-rest ratio (2:1, 3:1, 4:1).
+- **Post-run stretch** (7 min): static holds, one per muscle group plus both calf stretches.
 
-Open `index.html` in any browser, or use the hosted copy on GitHub Pages.
+Hands-free timer with beeps, a recorded coach voice, side-switch prompts and animated diagrams.
+Recent sessions are kept in the browser's local storage so consecutive days don't repeat.
+
+Hosted at https://core-workout.gonzoscreen.com (GitHub Pages).
+
+## Coach voice
+
+`audio/` holds one MP3 per spoken line, recorded with the open-source [Kokoro](https://github.com/thewh1teagle/kokoro-onnx)
+TTS model. After changing exercise names or cues, re-record only what changed:
+
+```bash
+node tools/voice/dump_lines.js > /tmp/lines.json
+venv/bin/python tools/voice/make_voice.py /tmp/lines.json --model-dir <folder with the Kokoro model files>
+```
+
+Setup steps and the voice settings are at the top of `tools/voice/make_voice.py`. If a clip is missing,
+the app falls back to the device's text-to-speech for that line.
 
 ## Android TV app
 

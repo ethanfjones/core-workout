@@ -2,10 +2,15 @@ plugins {
     id 'com.android.application'
 }
 
-// The web app (../../index.html) is bundled as an asset, so the TV still works when the site is unreachable.
+// The web app (../../index.html) and its voice clips are bundled as assets,
+// so the TV still works when the site is unreachable.
 def webDir = layout.buildDirectory.dir('generated/web')
 def copyWeb = tasks.register('copyWeb', Copy) {
     from rootProject.file('../index.html')
+    from(rootProject.file('../audio')) {
+        include '*.mp3'
+        into 'audio'
+    }
     into webDir
 }
 
@@ -17,8 +22,8 @@ android {
         applicationId 'io.github.ethanfjones.coreworkout'
         minSdk 26
         targetSdk 34
-        versionCode 2
-        versionName '1.1'
+        versionCode 3
+        versionName '1.2'
     }
 
     sourceSets {

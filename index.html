@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#0e1116">
-<title>Runner Core Workout</title>
+<title>Runner Training</title>
 <style>
 :root{
   --bg:#0e1116;--card:#171c24;--card2:#1e2530;--text:#eef1f5;--muted:#9aa4b2;--line:#2a3342;
@@ -53,6 +53,18 @@ h1{font-size:1.35rem;margin:4px 0 2px;letter-spacing:-.01em}
 .item .cue{font-size:.84rem;color:var(--muted);line-height:1.3}
 .chip{font-size:.7rem;font-weight:650;padding:1px 7px;border-radius:99px;border:1px solid currentColor}
 .cat-ext{color:var(--c-ext)}.cat-rot{color:var(--c-rot)}.cat-lat{color:var(--c-lat)}.cat-hip{color:var(--c-hip)}.cat-fin{color:var(--c-fin)}
+.cat-wmob,.cat-calf{color:var(--c-lat)}.cat-wswing,.cat-hipflex{color:var(--c-ext)}.cat-wlunge,.cat-ham{color:var(--c-rot)}
+.cat-wdrill,.cat-glute{color:var(--c-fin)}.cat-add{color:var(--c-hip)}.cat-back{color:var(--muted)}
+
+/* ---------- home ---------- */
+#home{padding:max(16px,env(safe-area-inset-top)) 0 32px}
+.cards{display:flex;flex-direction:column;gap:12px;margin-top:6px}
+.card{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;min-height:96px}
+.card svg{width:120px;height:64px;background:var(--card2);border-radius:10px}
+.card b{display:block;font-size:1.15rem;margin-bottom:2px}
+.card span{color:var(--muted);font-size:.88rem;line-height:1.3}
+.plan-head{display:flex;align-items:center;gap:8px;margin-bottom:2px}
+.plan-head button{min-height:44px;padding:8px 12px 8px 4px;color:var(--muted);font-weight:600}
 .dur{color:var(--text);font-weight:600}
 .dock{position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--bg) 28%)}
 .dock .in{max-width:560px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:10px}
@@ -115,6 +127,9 @@ body[data-paused=true] #setTime{opacity:.45}
   .opts{display:grid;grid-template-columns:1.4fr 1fr 1.2fr;gap:12px}
   .opt{grid-template-columns:1fr}
   .list{display:grid;grid-template-columns:1fr 1fr}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr)}
+  .card{grid-template-columns:1fr;text-align:center}
+  .card svg{width:100%;height:auto;aspect-ratio:240/128}
   #run{display:grid;grid-template-columns:1.25fr 1fr;column-gap:24px;row-gap:6px;
     grid-template-areas:"top top" "prog prog" "fig phase" "fig nm" "fig q" "fig side" "fig timer" "fig next" "fig ctrl" "fig tog";
     grid-template-rows:auto auto 1fr auto auto auto auto auto auto 1fr}
@@ -133,6 +148,7 @@ svg .fg{stroke:var(--fig)}svg .bk{stroke:var(--fig-far)}
 svg .mv{stroke:var(--move)}svg .mvf{stroke:var(--move);opacity:.5}
 svg .head{fill:var(--fig)}svg .eye{fill:var(--card)}
 svg .mat{fill:var(--mat)}
+svg .prop{stroke:var(--fig-far);stroke-linecap:round;opacity:.7}svg .propf{fill:var(--fig-far);opacity:.35}
 svg .arrow{fill:none;stroke:var(--move);stroke-width:2.5;stroke-dasharray:5 4;opacity:.9}
 svg .ahd{fill:var(--move)}
 svg .badge rect{fill:none;stroke:var(--move);stroke-width:1.5}
@@ -147,17 +163,31 @@ svg .badge text{fill:var(--move);font:700 10px system-ui,sans-serif;letter-spaci
 <div class="app">
 
 <!-- ======== SETUP ======== -->
-<main id="setup">
-  <h1>Runner core</h1>
-  <p class="sub">Trunk stiffness &amp; anti-movement work. Bodyweight, mat only.</p>
+<!-- ======== HOME ======== -->
+<main id="home">
+  <h1>Runner training</h1>
+  <p class="sub">Pick a session. Bodyweight only.</p>
+  <div class="cards" id="cards">
+    <button class="card" data-kind="warmup"><svg viewBox="0 -8 240 128" aria-hidden="true" data-icon="wgs"></svg><div><b>Pre-run warm-up</b><span>5 min · dynamic mobility and running drills</span></div></button>
+    <button class="card" data-kind="core"><svg viewBox="0 -8 240 128" aria-hidden="true" data-icon="deadbug"></svg><div><b>Core workout</b><span>Anti-movement strength · 5, 10 or 15 min</span></div></button>
+    <button class="card" data-kind="cooldown"><svg viewBox="0 -8 240 128" aria-hidden="true" data-icon="couch"></svg><div><b>Post-run stretch</b><span>7 min · static holds for calves, hips and hamstrings</span></div></button>
+  </div>
+  <div class="foot" id="foot"></div>
+</main>
+
+<!-- ======== PLAN ======== -->
+<main id="setup" hidden>
+  <div class="plan-head"><button id="homeBtn">‹ Home</button></div>
+  <h1 id="planTitle">Core workout</h1>
+  <p class="sub" id="planSub"></p>
   <div class="opts">
-    <div class="opt"><span>Difficulty</span>
+    <div class="opt" data-core><span>Difficulty</span>
       <div class="seg" id="levels" role="group" aria-label="Difficulty">
         <button data-v="easy">Easy<small>2:1 work : rest</small></button>
         <button data-v="moderate">Moderate<small>3:1 work : rest</small></button>
         <button data-v="hard">Hard<small>4:1 work : rest</small></button>
       </div></div>
-    <div class="opt"><span>Length</span>
+    <div class="opt" data-core><span>Length</span>
       <div class="seg" id="lens" role="group" aria-label="Length">
         <button data-v="5">5 min</button><button data-v="10">10 min</button><button data-v="15">15 min</button>
       </div></div>
@@ -168,9 +198,8 @@ svg .badge text{fill:var(--move);font:700 10px system-ui,sans-serif;letter-spaci
   </div>
   <div class="summary" id="summary"></div>
   <ol class="list" id="list"></ol>
-  <div class="foot" id="foot"></div>
 </main>
-<div class="dock" id="dock"><div class="in">
+<div class="dock" id="dock" hidden><div class="in">
   <button class="btn" id="regen">↻ Regenerate</button>
   <button class="btn primary" id="start">Start workout</button>
 </div></div>
@@ -206,7 +235,7 @@ svg .badge text{fill:var(--move);font:700 10px system-ui,sans-serif;letter-spaci
   <p class="big">✓</p>
   <h1>Done. Nice work.</h1>
   <p id="doneTxt"></p>
-  <button class="btn primary" id="again">New workout</button>
+  <button class="btn primary" id="again">Back to home</button>
 </main>
 
 </div>
@@ -225,8 +254,11 @@ const saveHistory = h => store.set(HIST_KEY, JSON.stringify(h.slice(0,30)));
 
 // ---------- pose library (side-on figures, head left, viewBox 0 -8 240 128, mat top y=110) ----------
 // pose = {h:head, s:shoulder, p:hip, a:[elbow,hand] near arm, a2: far arm, l:[knee,foot] near leg, l2: far leg,
-//         f: direction the face points, in degrees (omitted when the figure faces the viewer)}
-const P = (b,a,a2,l,l2) => ({h:b.h,s:b.s,p:b.p,f:b.f,a,a2,l,l2});
+//         f: direction the face points, in degrees (omitted when the figure faces the viewer),
+//         m: optional mid-back point for a curved spine, z: zoom about the mat centre (standing figures),
+//         wall: x of a wall, chair: [x, seat y, width], couch: true}
+const P = (b,a,a2,l,l2) => ({...b,a,a2,l,l2});
+const shift = (q,dx,dy) => { const T=v=>[v[0]+dx,v[1]+dy]; return {...q,h:T(q.h),s:T(q.s),p:T(q.p),a:q.a.map(T),a2:q.a2.map(T),l:q.l.map(T),l2:q.l2.map(T)}; };
 const rot = (q,deg,c) => {
   const t=deg*Math.PI/180, R=v=>[c[0]+(v[0]-c[0])*Math.cos(t)-(v[1]-c[1])*Math.sin(t), c[1]+(v[0]-c[0])*Math.sin(t)+(v[1]-c[1])*Math.cos(t)];
   return {h:R(q.h),s:R(q.s),p:R(q.p),f:q.f+deg,a:q.a.map(R),a2:q.a2.map(R),l:q.l.map(R),l2:q.l2.map(R)};
@@ -273,6 +305,29 @@ const REV={h:[46,56],s:[64,64],p:[132,82],f:-110}, REV_ARM=[[60,85],[56,106]], R
 const HINGE={h:[46,34],s:[64,38],p:[124,38],f:115};
 const HG_HANG=[[64,60],[64,84]], HG_UP=[[66,16],[68,-4]], HG_STAND=[[126,72],[126,106]];
 const HG_BACK=[[160,40],[194,42]], HG_OPEN=[[152,20],[176,40]];
+// standing figures are drawn full size and zoomed out (z); STF faces the viewer
+const ST={h:[120,-42],s:[120,-24],p:[120,36],f:180,z:.72}, STF={h:[120,-42],s:[120,-24],p:[120,36],z:.72};
+const ST_HANG=[[118,4],[116,30]], ST_HANG2=[[124,4],[128,28]], ST_LEG=[[120,72],[120,108]];
+const ST_KNEE=[[86,38],[88,74]], ST_RUNBACK=[[134,0],[146,22]], ST_RUNFWD=[[104,4],[96,-18]];
+const CAT={...QUAD,m:[105,58],h:[56,84],f:110}, COW={...QUAD,m:[105,84],h:[50,58],f:-150};
+const ANK_A={h:[96,-40],s:[104,-22],p:[114,36],f:180,z:.72,wall:48}, ANK_B={...ANK_A,h:[88,-38],s:[96,-20],p:[104,40]};
+const ANK_ARM=[[78,-8],[50,-14]], ANK_BACK=[[128,72],[146,108]];
+const WGS_A={h:[28,72],s:[44,74],p:[98,70],f:150,z:.85}, WGS_B={...WGS_A,h:[46,14],s:[56,30],f:-110};
+const WGS_FRONT=[[64,72],[62,108]], WGS_BACK=[[130,88],[164,104]];
+const FOLD={h:[156,102],s:[166,94],p:[186,40],f:90};
+const SWF={...STF}, SW_UP=[[100,-12],[92,-36]], SW_UP2=[[140,-12],[148,-36]], SW_STAND=[[128,72],[130,108]];
+const LUNGE={h:[113,-12],s:[114,6],p:[116,66],f:180,z:.72}, LG_ARMUP=[[116,-22],[118,-48]];
+const LAT_B={h:[102,-16],s:[102,2],p:[100,62],z:.72};
+const HC={...ST,wall:74};
+const CALF={h:[78,-30],s:[88,-16],p:[118,38],f:180,z:.72,wall:40}, CALF_ARM=[[62,-20],[42,-26]];
+const CALFB={h:[80,-22],s:[90,-8],p:[118,48],f:180,z:.72,wall:40}, CALFB_ARM=[[64,-14],[42,-20]];
+const COUCH={h:[112,-6],s:[116,12],p:[120,72],f:180,z:.85}, KN_ARM=[[106,38],[90,62]], KN_FRONT=[[84,72],[84,108]];
+const HAMC={h:[54,-10],s:[68,-2],p:[110,36],f:160,z:.72,chair:[16,62,46]};
+const PIG={h:[56,62],s:[72,64],p:[120,90],f:160};
+const NINE={h:[116,20],s:[118,38],p:[120,98],f:180};
+const BUT={h:[120,18],s:[120,36],p:[120,96]}, STR={h:[120,46],s:[120,62],p:[120,100]};
+const CHILD={h:[78,96],s:[96,92],p:[146,80],f:150};
+const FLAT=[[165,102],[199,102]];
 
 // ---------- exercise library ----------
 // lv: E easy, M moderate, H hard, A advanced. mode: hold | reps | dyn.
@@ -312,7 +367,7 @@ const EX = [
   {id:'sldb',cat:'ext',name:'Straight-leg dead bug',lv:['A'],mode:'reps',alt:true,period:4,
    cue:'Legs straight, lower one heel slowly. Low back never leaves the floor.',
    pose:[P(SUP,ARM_UP,ARM_UP,LEG_VERT,LEG_EXT),P(SUP,ARM_UP,ARM_UP,LEG_EXT,LEG_VERT)]},
-  {id:'circles',cat:'ext',name:'Plank circles',lv:['A'],mode:'reps',period:3,hl:[],arrow:'circle',
+  {id:'circles',cat:'ext',name:'Plank circles',lv:['A'],mode:'reps',period:3,hl:[],arrow:{c:[68,50],r:9},
    cue:'Draw small circles with your forearms. Hips stay still and level.',
    pose:[circ(-5,-3),circ(5,3)]},
   {id:'rocks',cat:'ext',name:'Hollow rocks',lv:['A'],mode:'reps',period:2,hl:[],
@@ -423,6 +478,149 @@ const EX = [
    pose:[P(HP,H_ARM,H_ARM,H_LEG,H_LEG),P(HP,H_ARM,H_ARM,H_WIDE,H_WIDE2)]},
 ];
 
+// ---------- stretch library ----------
+// dur: base seconds (fitted to the routine length). ord: cool-down order, standing first, floor last.
+CATS.wmob={label:'Mobility'}; CATS.wswing={label:'Leg swings'}; CATS.wlunge={label:'Lunges'}; CATS.wdrill={label:'Running drill'};
+CATS.calf={label:'Calves'}; CATS.hipflex={label:'Hip flexors & quads'}; CATS.ham={label:'Hamstrings'};
+CATS.glute={label:'Glutes'}; CATS.add={label:'Adductors'}; CATS.back={label:'Low back & spine'};
+const STRETCH = [
+  // pre-run, dynamic
+  {id:'catcow',cat:'wmob',name:'Cat-cow',mode:'reps',period:5,dur:30,hl:[],
+   cue:'Slowly round and arch your spine, moving with your breath.',
+   pose:[P(CAT,Q_ARMD,Q_ARMD,Q_LEGD,Q_LEGD),P(COW,Q_ARMD,Q_ARMD,Q_LEGD,Q_LEGD)]},
+  {id:'inchworm',cat:'wmob',name:'Inchworm',mode:'reps',period:5,dur:30,
+   cue:'Walk your hands out to a plank and back, legs as straight as is comfortable.',
+   pose:[P(FOLD,[[144,100],[120,106]],[[144,100],[120,106]],[[192,72],[198,106]],[[192,72],[198,106]]),P(HP,H_ARM,H_ARM,H_LEG,H_LEG)]},
+  {id:'ankle',cat:'wmob',name:'Knee-to-wall ankle rocks',mode:'reps',uni:true,period:2.5,dur:40,
+   cue:'Drive the knee toward the wall over your toes. Heel stays down.',
+   pose:[P(ANK_A,ANK_ARM,ANK_ARM,[[100,72],[90,108]],ANK_BACK),P(ANK_B,ANK_ARM,ANK_ARM,[[80,74],[90,108]],ANK_BACK)]},
+  {id:'wgs',cat:'wmob',name:"World's greatest stretch",mode:'reps',alt:true,period:6,dur:40,
+   say:"world's greatest stretch",
+   cue:'Lunge, elbow to instep, then rotate and reach to the ceiling.',
+   pose:[P(WGS_A,[[56,98],[70,104]],[[40,98],[38,106]],WGS_FRONT,WGS_BACK),P(WGS_B,[[54,58],[56,84]],[[58,2],[60,-24]],WGS_FRONT,WGS_BACK)]},
+  {id:'swingfb',cat:'wswing',name:'Front-to-back leg swings',mode:'dyn',uni:true,period:1.6,dur:40,
+   cue:'Hand on the wall, swing from the hip, trunk tall.',
+   pose:[P(ST,ST_HANG,ST_HANG2,[[92,58],[64,80]],ST_LEG),P(ST,ST_HANG,ST_HANG2,[[146,60],[170,84]],ST_LEG)]},
+  {id:'swingside',cat:'wswing',name:'Side-to-side leg swings',mode:'dyn',uni:true,period:1.6,dur:40,
+   cue:'Face the wall, swing the leg across your body and out.',
+   pose:[P(SWF,SW_UP,SW_UP2,[[132,70],[146,102]],SW_STAND),P(SWF,SW_UP,SW_UP2,[[96,66],[74,92]],SW_STAND)]},
+  {id:'revlunge',cat:'wlunge',name:'Reverse lunge with overhead reach',mode:'reps',alt:true,period:4,dur:30,
+   say:'reverse lunge with an overhead reach',
+   cue:'Step back, reach both arms up, feel the front of the hip open.',
+   pose:[P(ST,ST_HANG,ST_HANG2,ST_LEG,ST_LEG),P(LUNGE,LG_ARMUP,LG_ARMUP,[[84,70],[82,108]],[[136,98],[170,104]])]},
+  {id:'latlunge',cat:'wlunge',name:'Lateral lunge',mode:'reps',alt:true,period:4,dur:30,
+   cue:'Sit back into one hip, other leg straight, chest up.',
+   pose:[P(STF,[[108,-6],[118,-14]],[[132,-6],[122,-14]],[[106,72],[96,108]],[[134,72],[144,108]]),
+         P(LAT_B,[[90,10],[100,2]],[[114,10],[104,2]],[[78,78],[84,108]],[[132,85],[164,108]])]},
+  {id:'hipcircle',cat:'wlunge',name:'Standing hip circles',mode:'reps',uni:true,period:3,dur:30,hl:['l'],arrow:{c:[104,40],r:14},
+   cue:'Hand on the wall, draw big slow circles with your knee.',
+   pose:[P(HC,ST_HANG,[[100,-12],[76,-10]],ST_KNEE,ST_LEG),P(HC,ST_HANG,[[100,-12],[76,-10]],[[132,46],[148,78]],ST_LEG)]},
+  {id:'askip',cat:'wdrill',name:'A-march to A-skip',mode:'dyn',period:1.2,dur:30,
+   say:'A march, building to A skips',
+   cue:'Tall posture, drive the knee up, quick foot strike under the hip.',
+   pose:[P(ST,ST_RUNBACK,ST_RUNFWD,ST_KNEE,ST_LEG),P(ST,ST_RUNFWD,ST_RUNBACK,ST_LEG,ST_KNEE)]},
+  {id:'pogo',cat:'wdrill',name:'Pogo hops',mode:'dyn',period:.6,dur:20,hl:[],
+   cue:'Small quick bounces off the balls of your feet, knees soft.',
+   pose:[P(ST,ST_HANG,ST_HANG2,ST_LEG,ST_LEG),shift(P(ST,ST_HANG,ST_HANG2,ST_LEG,ST_LEG),0,-8)]},
+  // post-run, static
+  {id:'calfstraight',cat:'calf',name:'Wall calf stretch, straight knee',mode:'hold',uni:true,dur:60,ord:1,hl:['l2'],
+   say:'wall calf stretch, back knee straight',
+   cue:'Hands on the wall, back leg straight, heel down, lean in until you feel the calf.',
+   pose:[P(CALF,CALF_ARM,CALF_ARM,[[96,72],[90,108]],[[145,73],[172,108]])]},
+  {id:'calfbent',cat:'calf',name:'Wall calf stretch, bent knee',mode:'hold',uni:true,dur:60,ord:1,hl:['l2'],
+   say:'wall calf stretch, back knee bent',
+   cue:'Same stance, now bend the back knee with the heel down. Feel it low in the calf.',
+   pose:[P(CALFB,CALFB_ARM,CALFB_ARM,[[96,80],[90,108]],[[136,82],[150,108]])]},
+  {id:'quad',cat:'hipflex',name:'Standing quad stretch',mode:'hold',uni:true,dur:60,ord:2,hl:['l'],
+   cue:'Hold your foot behind you, knees together, tuck the pelvis under.',
+   pose:[P({...ST,wall:74},[[130,8],[138,38]],[[100,-14],[76,-12]],[[122,72],[138,44]],ST_LEG)]},
+  {id:'couch',cat:'hipflex',name:'Couch stretch',mode:'hold',uni:true,dur:60,ord:3,hl:['l2'],
+   cue:'Back knee at the couch, shin up the front, squeeze the glute and stay tall.',
+   pose:[P({...COUCH,couch:true},KN_ARM,KN_ARM,KN_FRONT,[[144,104],[150,68]])]},
+  {id:'hipflexor',cat:'hipflex',name:'Half-kneeling hip flexor stretch',mode:'hold',uni:true,dur:60,ord:3,hl:['l2'],
+   cue:'Tuck the pelvis under and shift forward until the front of the hip opens.',
+   pose:[P(COUCH,KN_ARM,KN_ARM,KN_FRONT,[[144,104],[178,106]])]},
+  {id:'hamchair',cat:'ham',name:'Elevated hamstring stretch',mode:'hold',uni:true,dur:60,ord:2,hl:['l'],
+   cue:'Heel on the chair, leg straight, hinge forward from the hips with a flat back.',
+   pose:[P(HAMC,[[66,24],[70,48]],[[66,24],[70,48]],[[80,48],[46,58]],ST_LEG.map(v=>[v[0]-10,v[1]]))]},
+  {id:'hamsupine',cat:'ham',name:'Lying hamstring stretch',mode:'hold',uni:true,dur:60,ord:5,hl:['l'],
+   cue:'On your back, hold behind the thigh and straighten the leg toward the ceiling.',
+   pose:[P(SUP,[[90,84],[114,78]],[[90,86],[116,80]],LEG_VERT,FLAT)]},
+  {id:'fig4',cat:'glute',name:'Figure-4 stretch',mode:'hold',uni:true,dur:60,ord:5,hl:['l'],
+   say:'figure four stretch',
+   cue:'Ankle across the opposite knee, pull both legs toward your chest.',
+   pose:[P(SUP,[[90,82],[118,72]],[[90,84],[120,74]],[[154,82],[130,66]],[[128,66],[160,58]])]},
+  {id:'pigeon',cat:'glute',name:'Pigeon stretch',mode:'hold',uni:true,dur:60,ord:4,hl:['l'],
+   cue:'Front shin across, back leg long, fold forward and let the hip sink.',
+   pose:[P(PIG,[[64,92],[42,104]],[[64,92],[42,104]],[[88,102],[106,106]],[[156,102],[192,104]])]},
+  {id:'ninety',cat:'glute',name:'90/90 hip stretch',mode:'hold',uni:true,dur:60,ord:4,hl:['l'],
+   say:'ninety ninety hip stretch',
+   cue:'Both knees bent at 90 degrees, sit tall and lean gently over the front shin.',
+   pose:[P(NINE,[[110,64],[104,92]],[[126,64],[132,92]],[[88,104],[106,106]],[[152,104],[176,96]])]},
+  {id:'butterfly',cat:'add',name:'Butterfly stretch',mode:'hold',dur:45,ord:4,
+   cue:'Soles together, sit tall, let the knees fall open. No bouncing.',
+   pose:[P(BUT,[[106,64],[118,98]],[[134,64],[122,98]],[[86,90],[118,104]],[[154,90],[122,104]])]},
+  {id:'straddle',cat:'add',name:'Wide-leg seated stretch',mode:'hold',dur:45,ord:4,
+   cue:'Legs wide, toes up, walk your hands forward with a long spine.',
+   pose:[P(STR,[[108,84],[98,104]],[[132,84],[142,104]],[[86,104],[50,106]],[[154,104],[190,106]])]},
+  {id:'child',cat:'back',name:"Child's pose",mode:'hold',dur:45,ord:6,
+   say:"child's pose",
+   cue:'Hips back to your heels, arms long, breathe into your low back.',
+   pose:[P(CHILD,[[64,104],[36,104]],[[64,104],[36,104]],[[116,104],[154,106]],[[116,104],[154,106]])]},
+  {id:'twist',cat:'back',name:'Lying spinal twist',mode:'hold',uni:true,dur:60,ord:7,hl:['l'],
+   cue:'Knee across your body to the floor, shoulders stay down, look the other way.',
+   pose:[P({...SUP,f:-30},[[40,100],[16,98]],[[40,100],[16,98]],[[148,80],[170,100]],FLAT)]},
+];
+const ALL = EX.concat(STRETCH);
+const byId = Object.fromEntries(ALL.map(e=>[e.id,e]));
+
+// Each routine picks one exercise per slot (no repeats), then fits durations to the target length
+const ROUTINES = {
+  warmup:  {title:'Pre-run warm-up', target:300, trans:5,
+            sub:'Dynamic mobility and running drills. About 5 minutes, done just before you head out.',
+            slots:[['catcow','inchworm'],['ankle'],['wgs'],['swingfb'],['swingside'],['revlunge','latlunge','hipcircle'],['revlunge','latlunge','hipcircle'],['askip'],['pogo']]},
+  cooldown:{title:'Post-run stretch', target:420, trans:10,
+            sub:'Static holds after your run: about 30 seconds per side, adding up to a minute per muscle group.',
+            slots:[['calfstraight'],['calfbent'],['quad','couch','hipflexor'],['hamchair','hamsupine'],['fig4','pigeon','ninety'],['butterfly','straddle'],['child','twist']]},
+};
+function buildRoutine(kind, hist){
+  const R0 = ROUTINES[kind], recency = e => { const i=hist.findIndex(h=>h.ids.includes(e.id)); return i<0?1:i===0?.25:.6; };
+  const chosen = [];
+  for(const slot of R0.slots){
+    const pool = slot.map(id=>byId[id]).filter(e=>!chosen.includes(e));
+    chosen.push(...pickN(pool,1,recency));
+  }
+  const exs = kind==='cooldown' ? chosen.slice().sort((a,b)=>a.ord-b.ord) : chosen;
+  const step = e => e.uni ? 10 : 5, budget = R0.target - R0.trans*(exs.length-1);
+  const base = exs.reduce((t,e)=>t+e.dur,0);
+  const ws = exs.map(e=>Math.max(e.uni?20:15, Math.round(e.dur*budget/base/step(e))*step(e)));
+  for(let k=0;k<60;k++){
+    const t = ws.reduce((a,b)=>a+b,0) + R0.trans*(exs.length-1);
+    if(Math.abs(t-R0.target)<=5) break;
+    const i = Math.floor(Math.random()*exs.length), d = step(exs[i]);
+    if(t<R0.target) ws[i]+=d; else if(ws[i]-d >= (exs[i].uni?20:15)) ws[i]-=d;
+  }
+  const blocks = exs.map((ex,i)=>({ex, work:ws[i], rest:i<exs.length-1?R0.trans:0}));
+  return {kind, blocks, total:blocks.reduce((t,b)=>t+b.work+b.rest,0)};
+}
+
+// ---------- spoken lines (recorded once as audio/<key>.mp3 by tools/voice) ----------
+const spokenName = ex => ex.say || ex.name.replace(/\s*\(.*?\)/g,'').replace(/ \+ /,' with ').replace(/&/,'and');
+const spokenCue = ex => ex.cue.replace(/°/g,' degrees');
+const PHRASES = {
+  'p-get-ready':'Get ready.', 'p-rest':'Rest.', 'p-last':'Last one.', 'p-halfway':'Halfway.', 'p-ten':'Ten seconds.',
+  'p-3':'Three.', 'p-2':'Two.', 'p-1':'One.', 'p-switch':'Switch sides.',
+  'p-done-core':'Workout complete. Nice work.', 'p-done-warmup':'Warm-up done. Have a good run.',
+  'p-done-cooldown':'All done. Nice work today.', 'p-sample':'Right then. This is your coach. Let us get to work.',
+};
+function voiceLines(){
+  const L = {...PHRASES};
+  ALL.forEach(ex=>{ L['n-'+ex.id]=`Next up: ${spokenName(ex)}.`; L['c-'+ex.id]=spokenCue(ex); });
+  for(let n=5;n<=75;n++) L['d-'+n]=`${n} seconds.`;
+  for(let n=5;n<=40;n++) L['d-'+n+'-each']=`${n} seconds each side.`;
+  return L;
+}
+
 // ---------- levels and lengths ----------
 const RATIO = {easy:2, moderate:3, hard:4};                       // work : rest
 const SHORT = {easy:[25,30,35,40,45], moderate:[30,35,40,45], hard:[35,40,45,50]};
@@ -507,12 +705,13 @@ function buildSession(level, len, hist){
   const exs = shuffle(chosen).sort((a,b)=>CAT_ORDER.indexOf(a.cat)-CAT_ORDER.indexOf(b.cat));
   const ws = planDurations(exs, level, len);
   const blocks = exs.map((ex,i)=>({ex, work:ws[i], rest:i<exs.length-1?restFor(ws[i],RATIO[level]):0}));
-  return {level, len, blocks, total:totalOf(ws,RATIO[level])};
+  return {kind:'core', level, len, blocks, total:totalOf(ws,RATIO[level])};
 }
 
-// Avoid yesterday's exercises (soft) and any repeat of a recent exact set (hard)
-function generate(level, len){
-  const hist = loadHistory();
+// Avoid recent exercises (soft) and, for core, any repeat of a recent exact set (hard)
+function generate(kind, level, len){
+  const hist = loadHistory().filter(h=>(h.kind||'core')===kind);
+  if(kind!=='core') return buildRoutine(kind, hist);
   const sigs = hist.slice(0,7).map(h=>h.ids.slice().sort().join());
   let s;
   for(let i=0;i<40;i++){
@@ -544,12 +743,13 @@ function analyze(ex){
   const mv = {};
   for(const k of ['a','a2','l','l2']) mv[k] = ex.hl ? ex.hl.includes(k) : (dist(A[k][0],B[k][0])>5 || dist(A[k][1],B[k][1])>5);
   const ctr = [(A.s[0]+A.p[0])/2, (A.s[1]+A.p[1])/2];
-  if(ex.arrow==='circle'){
-    const c=[A.s[0]+8, A.s[1]-26], r=9;
+  if(ex.arrow){
+    const {c, r} = ex.arrow;
     return {mv, hold:false, arrow:`<path class="arrow" marker-end="url(#ah)" d="M${c[0]+r},${c[1]} A${r},${r} 0 1 1 ${c[0]},${c[1]-r}"/>`};
   }
   const cands = [[A.a[1],B.a[1],1],[A.a2[1],B.a2[1],.8],[A.l[1],B.l[1],1],[A.l[0],B.l[0],.9],
                  [A.l2[1],B.l2[1],.8],[A.l2[0],B.l2[0],.7],[A.p,B.p,1.1],[A.h,B.h,.6]];
+  if(A.m && B.m) cands.push([A.m,B.m,1.3]);
   let best=null, bd=0;
   for(const c of cands){ const d=dist(c[0],c[1])*c[2]; if(d>bd){ bd=d; best=c; } }
   if(!best || bd<5) return {mv, hold:false, arrow:''};
@@ -558,27 +758,36 @@ function analyze(ex){
   const mid = [(P0[0]+P1[0])/2, (P0[1]+P1[1])/2];
   if((mid[0]-ctr[0])*px + (mid[1]-ctr[1])*py < 0){ px=-px; py=-py; }
   const off = 10, bulge = Math.min(16, len*.3);
-  if(Math.max(P0[1],P1[1]) + py*off > 106 || mid[1] + py*(off+bulge) > 106){ px=-px; py=-py; }
+  if(!A.z && (Math.max(P0[1],P1[1]) + py*off > 106 || mid[1] + py*(off+bulge) > 106)){ px=-px; py=-py; }
   const d = `M${n1(P0[0]+px*off)},${n1(P0[1]+py*off)} Q${n1(mid[0]+px*(off+bulge))},${n1(mid[1]+py*(off+bulge))} ${n1(P1[0]+px*off)},${n1(P1[1]+py*off)}`;
   return {mv, hold:false, arrow:`<path class="arrow" marker-start="url(#ah)" marker-end="url(#ah)" d="${d}"/>`};
 }
-EX.forEach(ex => ex.meta = analyze(ex));
+ALL.forEach(ex => ex.meta = analyze(ex));
 
+function props(p){
+  let s = '';
+  if(p.wall!=null) s += `<line class="prop" x1="${p.wall}" y1="-70" x2="${p.wall}" y2="110" stroke-width="5"/>`;
+  if(p.chair){ const [x,y,w]=p.chair; s += `<line class="prop" x1="${x}" y1="${y}" x2="${x+w}" y2="${y}" stroke-width="6"/><line class="prop" x1="${x+3}" y1="${y}" x2="${x+3}" y2="110" stroke-width="4"/><line class="prop" x1="${x+w-3}" y1="${y}" x2="${x+w-3}" y2="110" stroke-width="4"/><line class="prop" x1="${x+3}" y1="${y}" x2="${x+3}" y2="${y-40}" stroke-width="4"/>`; }
+  if(p.couch) s += '<rect class="propf" x="152" y="74" width="84" height="36" rx="6"/><rect class="propf" x="212" y="34" width="24" height="76" rx="6"/>';
+  return s;
+}
 function figMarkup(p, m){
   const c = k => m.mv[k] ? (k.endsWith('2')?'mvf':'mv') : (k.endsWith('2')?'bk':'fg');
   let eye = '';
   if(p.f!=null){ const t=p.f*Math.PI/180; eye=`<circle class="eye" cx="${n1(p.h[0]+Math.cos(t)*5)}" cy="${n1(p.h[1]+Math.sin(t)*5)}" r="2.6"/>`; }
-  return MAT + m.arrow
+  const torso = p.m ? seg(p.s,p.m,15,'fg')+seg(p.m,p.p,15,'fg') : seg(p.s,p.p,15,'fg');
+  const body = props(p) + m.arrow
     + arm(p.s,p.a2,c('a2')) + leg(p.p,p.l2,c('l2'))
-    + seg(p.h,p.s,8,'fg') + seg(p.s,p.p,15,'fg')
+    + seg(p.h,p.s,8,'fg') + torso
     + `<circle class="head" cx="${n1(p.h[0])}" cy="${n1(p.h[1])}" r="10"/>` + eye
-    + leg(p.p,p.l,c('l')) + arm(p.s,p.a,c('a'))
-    + (m.hold ? HOLD : '');
+    + leg(p.p,p.l,c('l')) + arm(p.s,p.a,c('a'));
+  return MAT + (p.z ? `<g transform="translate(120 110) scale(${p.z}) translate(-120 -110)">${body}</g>` : body) + (m.hold ? HOLD : '');
 }
 function lerpPose(A,B,t){
   const m=(u,v)=>[u[0]+(v[0]-u[0])*t,u[1]+(v[1]-u[1])*t], m2=(x,y)=>[m(x[0],y[0]),m(x[1],y[1])];
   const f = A.f!=null && B.f!=null ? A.f+(B.f-A.f)*t : (t<.5?A.f:B.f);
-  return {h:m(A.h,B.h),s:m(A.s,B.s),p:m(A.p,B.p),f,a:m2(A.a,B.a),a2:m2(A.a2,B.a2),l:m2(A.l,B.l),l2:m2(A.l2,B.l2)};
+  return {...A,h:m(A.h,B.h),s:m(A.s,B.s),p:m(A.p,B.p),f,m:A.m&&B.m?m(A.m,B.m):A.m,
+          a:m2(A.a,B.a),a2:m2(A.a2,B.a2),l:m2(A.l,B.l),l2:m2(A.l2,B.l2)};
 }
 const Fig = {ex:null, time:0, last:0};
 function setFig(ex){
@@ -600,30 +809,38 @@ function figLoop(now){
 }
 requestAnimationFrame(figLoop);
 
-// ---------- setup screen ----------
+// ---------- home and plan screens ----------
 // Levels shifted up in v2 (new Easy = old Moderate), so the saved level uses a new key and starts on Easy
 const LEVEL_KEY = 'runnerCore.level.v2';
-const S = {level: store.get(LEVEL_KEY)||'easy', len: +store.get('runnerCore.len')||10, session:null};
+const S = {kind:'core', level: store.get(LEVEL_KEY)||'easy', len: +store.get('runnerCore.len')||10, session:null};
 if(!RATIO[S.level]) S.level='easy';
 if(!LENGTHS[S.len]) S.len=10;
+const KIND = {
+  core:    {title:'Core workout', sub:'Trunk stiffness & anti-movement work. Bodyweight, mat only.', unit:'sets', gap:'rest', start:'Start workout'},
+  warmup:  {title:ROUTINES.warmup.title, sub:ROUTINES.warmup.sub, unit:'moves', gap:'transition', start:'Start warm-up'},
+  cooldown:{title:ROUTINES.cooldown.title, sub:ROUTINES.cooldown.sub, unit:'stretches', gap:'transition', start:'Start stretching'},
+};
 
 function howText(b){
   const ex=b.ex;
-  if(ex.mode==='hold') return 'hold';
+  if(ex.mode==='hold') return STRETCH.includes(ex) ? 'hold, breathe' : 'hold';
   if(ex.mode==='dyn') return 'steady pace';
   const reps = Math.max(1, Math.round((ex.uni?b.work/2:b.work)/ex.period));
   return `~${reps} reps${ex.uni||ex.alt?' / side':''}`;
 }
 function describe(b){
   const dur = b.ex.uni ? `<span class="dur">${Math.round(b.work/2)}s</span> each side` : `<span class="dur">${b.work}s</span>`;
-  return `${dur} · ${howText(b)}${b.rest?` · ${b.rest}s rest`:''}`;
+  return `${dur} · ${howText(b)}${b.rest?` · ${b.rest}s ${KIND[S.kind].gap}`:''}`;
 }
 
 function pressed(id, v){ document.querySelectorAll(`#${id} button`).forEach(b=>b.setAttribute('aria-pressed', b.dataset.v===String(v))); }
 function renderSetup(){
+  const K = KIND[S.kind];
+  $('planTitle').textContent = K.title; $('planSub').textContent = K.sub; $('start').textContent = K.start;
+  document.querySelectorAll('[data-core]').forEach(el=>el.hidden = S.kind!=='core');
   pressed('levels', S.level); pressed('lens', S.len); pressed('voices', prefs.voice ? prefs.rate : 0);
   const s=S.session, work=s.blocks.reduce((t,b)=>t+b.work,0);
-  $('summary').innerHTML = `<span><b>${s.blocks.length}</b> sets · <b>${fmt(s.total)}</b> total</span><span>${fmt(work)} work · ${fmt(s.total-work)} rest</span>`;
+  $('summary').innerHTML = `<span><b>${s.blocks.length}</b> ${K.unit} · <b>${fmt(s.total)}</b> total</span><span>${fmt(work)} work · ${fmt(s.total-work)} ${K.gap}</span>`;
   $('list').innerHTML = s.blocks.map((b,i)=>`
     <li class="item">
       <svg viewBox="0 -8 240 128" aria-hidden="true">${figMarkup(b.ex.pose[0], b.ex.meta)}</svg>
@@ -633,13 +850,29 @@ function renderSetup(){
         <div class="cue">${b.ex.cue}</div>
       </div>
     </li>`).join('');
+}
+function newSession(){ S.session = generate(S.kind, S.level, S.len); renderSetup(); window.scrollTo(0,0); }
+
+function renderHome(){
+  document.querySelectorAll('#cards svg[data-icon]').forEach(svg=>{ const ex=byId[svg.dataset.icon]; svg.innerHTML=figMarkup(ex.pose[0], ex.meta); });
   const h=loadHistory();
   $('foot').innerHTML = h.length
     ? `${h.length} session${h.length>1?'s':''} remembered · last: ${new Date(h[0].t).toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'})} <button id="clr">clear</button>`
     : 'No sessions remembered yet.';
-  const c=$('clr'); if(c) c.onclick=()=>{ if(confirm('Clear remembered sessions?')){ saveHistory([]); renderSetup(); } };
+  const c=$('clr'); if(c) c.onclick=()=>{ if(confirm('Clear remembered sessions?')){ saveHistory([]); renderHome(); } };
 }
-function newSession(){ S.session = generate(S.level, S.len); renderSetup(); window.scrollTo(0,0); }
+function showHome(){
+  ['setup','run','done'].forEach(id=>$(id).hidden=true); $('dock').hidden=true; $('home').hidden=false;
+  document.body.dataset.phase='ready'; document.body.dataset.paused='false';
+  renderHome(); window.scrollTo(0,0);
+  const card=document.querySelector(`#cards [data-kind="${S.kind}"]`); card && card.focus({preventScroll:true});
+}
+function openPlan(kind){
+  S.kind=kind; $('home').hidden=true; $('setup').hidden=false; $('dock').hidden=false;
+  newSession(); $('start').focus({preventScroll:true});
+}
+document.querySelectorAll('#cards [data-kind]').forEach(b=>b.onclick=()=>openPlan(b.dataset.kind));
+$('homeBtn').onclick = showHome;
 
 document.querySelectorAll('#levels button').forEach(b=>b.onclick=()=>{
   S.level=b.dataset.v; store.set(LEVEL_KEY,S.level); newSession();
@@ -651,7 +884,7 @@ document.querySelectorAll('#voices button').forEach(b=>b.onclick=()=>{
   const r=+b.dataset.v;
   prefs.voice = r>0; if(r>0) prefs.rate=r;
   savePrefs(); pressed('voices', prefs.voice ? prefs.rate : 0);
-  say(prefs.voice ? 'This is your workout voice.' : '');
+  if(prefs.voice) say([line('p-sample')]); else hush();
 });
 $('regen').onclick = newSession;
 
@@ -692,30 +925,62 @@ function pickVoice(){
 }
 if('speechSynthesis' in window){ pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
 
+// Device text-to-speech, used only when a recorded clip is missing or can't play.
 // The Android TV app provides AndroidTTS, since its WebView has no speechSynthesis.
-// A delay lets a beep finish before speech starts; a newer say() or hush() cancels a pending one.
+function ttsSay(txt){
+  if(window.AndroidTTS){
+    try { AndroidTTS.speakAt ? AndroidTTS.speakAt(txt, prefs.rate) : AndroidTTS.speak(txt); } catch(e){}
+    return;
+  }
+  if(!('speechSynthesis' in window)) return;
+  try {
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(txt);
+    if(bestVoice){ u.voice = bestVoice; u.lang = bestVoice.lang; }
+    u.rate = prefs.rate;
+    speechSynthesis.speak(u);
+  } catch(e){}
+}
+
+// Recorded coach voice: each spoken line is a list of [clip key, text] played back to back from audio/.
+// A delay lets a beep finish before speech starts; a newer say() or hush() cancels anything pending.
+const VOICE_TEXT = voiceLines();
+const line = k => [k, VOICE_TEXT[k] || ''];
+const clip = new Audio(); clip.preload = 'auto';
 let sayToken = 0;
-function say(txt, delay=0){
+function say(items, delay=0){
   const token = ++sayToken;
-  if(!prefs.voice || !txt) return;
+  if(!prefs.voice || !items.length) return;
   const go = () => {
-    if(token!==sayToken) return;
-    if(window.AndroidTTS){
-      try { AndroidTTS.speakAt ? AndroidTTS.speakAt(txt, prefs.rate) : AndroidTTS.speak(txt); } catch(e){}
-      return;
-    }
-    if(!('speechSynthesis' in window)) return;
-    try {
-      speechSynthesis.cancel();
-      const u = new SpeechSynthesisUtterance(txt);
-      if(bestVoice){ u.voice = bestVoice; u.lang = bestVoice.lang; }
-      u.rate = prefs.rate;
-      speechSynthesis.speak(u);
-    } catch(e){}
+    let i = 0;
+    const fallback = () => { if(token===sayToken) ttsSay(items.slice(Math.max(0,i-1)).map(x=>x[1]).join(' ')); };
+    const next = () => {
+      if(token!==sayToken || i>=items.length) return;
+      const key = items[i++][0];
+      clip.onended = () => { if(token===sayToken) setTimeout(next, 60); };
+      clip.onerror = fallback;
+      clip.src = `audio/${key}.mp3`;
+      clip.defaultPlaybackRate = clip.playbackRate = prefs.rate;
+      clip.preservesPitch = clip.webkitPreservesPitch = true;
+      const pr = clip.play();
+      if(pr) pr.catch(e => { if(e.name!=='AbortError') fallback(); });
+    };
+    if(token===sayToken) next();
   };
   delay ? setTimeout(go, delay) : go();
 }
-function hush(){ sayToken++; try { window.AndroidTTS ? AndroidTTS.stop() : speechSynthesis.cancel(); } catch(e){} }
+function hush(){
+  sayToken++;
+  try { clip.pause(); } catch(e){}
+  try { window.AndroidTTS ? AndroidTTS.stop() : speechSynthesis.cancel(); } catch(e){}
+}
+// Warm the HTTP cache with this session's clips so playback starts instantly
+function prefetchVoice(session){
+  if(!prefs.voice || location.protocol==='file:') return;
+  const keys = new Set(Object.keys(PHRASES));
+  session.blocks.forEach(b=>{ keys.add('n-'+b.ex.id); keys.add('c-'+b.ex.id); keys.add(durLine(b)[0]); });
+  keys.forEach(k=>fetch(`audio/${k}.mp3`).catch(()=>{}));
+}
 const buzz = p => { try { navigator.vibrate && navigator.vibrate(p); } catch(e){} };
 let wake = null;
 async function lockScreen(){ try { if('wakeLock' in navigator) wake = await navigator.wakeLock.request('screen'); } catch(e){} }
@@ -745,25 +1010,28 @@ function buildSegs(session){
 function startWorkout(){
   const s=S.session;
   try { actx = actx || new (window.AudioContext||window.webkitAudioContext)(); actx.resume && actx.resume(); } catch(e){ actx=null; }
-  saveHistory([{t:Date.now(), level:s.level, len:s.len, ids:s.blocks.map(b=>b.ex.id)}].concat(loadHistory()));
+  saveHistory([{t:Date.now(), kind:s.kind, level:s.level, len:s.len, ids:s.blocks.map(b=>b.ex.id)}].concat(loadHistory()));
+  prefetchVoice(s);
   Object.assign(R,{active:true,paused:false,session:s,segs:buildSegs(s),i:0,el:0,last:performance.now(),lastSec:null,total:s.total});
-  $('setup').hidden=true; $('dock').hidden=true; $('done').hidden=true; $('run').hidden=false;
+  $('home').hidden=true; $('setup').hidden=true; $('dock').hidden=true; $('done').hidden=true; $('run').hidden=false;
   $('prog').innerHTML=s.blocks.map(()=>'<i></i>').join('');
   document.body.dataset.paused='false'; $('bPause').textContent='Pause';
   syncToggles(); lockScreen(); onSegStart(); renderRun(); $('bPause').focus();
   clearInterval(R.timer); R.timer=setInterval(tick,100);
 }
 
-const sideText = b => b.ex.uni ? `${Math.round(b.work/2)} seconds each side` : `${b.work} seconds`;
+const durLine = b => line(b.ex.uni ? `d-${Math.round(b.work/2)}-each` : `d-${b.work}`);
 function onSegStart(){
   const seg=R.segs[R.i], blocks=R.session.blocks, b=blocks[seg.show];
   R.lastSec=null; seg.switched=false; seg.half=false; seg.ten=false;
-  if(seg.type==='ready'){ beep(660,.12); say(`Get ready. First up: ${b.ex.name}, ${sideText(b)}.`, 200); }
-  else if(seg.type==='work'){ beep(1175,.4,.4); buzz(200); say(b.ex.cue, 450); }
+  // the first line plays straight from the Start tap, which is what lets phones allow audio
+  if(seg.type==='ready'){ beep(660,.12); say([line('p-get-ready'), line('n-'+b.ex.id), durLine(b)]); }
+  else if(seg.type==='work'){ beep(1175,.4,.4); buzz(200); say([line('c-'+b.ex.id)], 450); }
   else {
-    const prev=blocks[seg.show-1];
     beep(523,.15); beep(523,.15,.35,.2); buzz([80,60,80]);
-    say(`${seg.show===blocks.length-1?'Last set. ':''}Rest ${prev.rest} seconds. Next: ${b.ex.name}, ${sideText(b)}.`, 500);
+    const intro = R.session.kind==='core' ? [line('p-rest')] : [];
+    if(seg.show===blocks.length-1) intro.push(line('p-last'));
+    say([...intro, line('n-'+b.ex.id), durLine(b)], 450);
   }
 }
 
@@ -781,14 +1049,15 @@ function tick(){
   if(left!==R.lastSec){
     R.lastSec=left;
     // spoken 3-2-1 when the voice is on, ticks otherwise, so the two never overlap
-    if(left>=1&&left<=3){ prefs.voice ? say(String(left)) : beep(left===1?880:660,.09,.3); }
-    else if(seg.type==='work' && left===10 && seg.dur>=30 && !seg.ten){ seg.ten=true; say('10 seconds.'); }
+    // spoken 3-2-1 when the voice is on, ticks otherwise; short transitions only get ticks
+    if(left>=1&&left<=3){ prefs.voice && seg.dur>=8 ? say([line('p-'+left)]) : beep(left===1?880:660,.09,.3); }
+    else if(seg.type==='work' && left===10 && seg.dur>=30 && !seg.ten){ seg.ten=true; say([line('p-ten')]); }
   }
-  if(seg.type==='work' && seg.switchAt==null && seg.dur>=40 && !seg.half && R.el>=seg.dur*500){
-    seg.half=true; say('Halfway.');
+  if(R.session.kind==='core' && seg.type==='work' && seg.switchAt==null && seg.dur>=40 && !seg.half && R.el>=seg.dur*500){
+    seg.half=true; say([line('p-halfway')]);
   }
   if(seg.switchAt!=null && !seg.switched && R.el>=seg.switchAt*1000){
-    seg.switched=true; beep(988,.12); beep(988,.12,.35,.18); buzz([120,80,120]); say('Switch sides.', 400);
+    seg.switched=true; beep(988,.12); beep(988,.12,.35,.18); buzz([120,80,120]); say([line('p-switch')], 400);
     const sd=$('rSide'); sd.classList.remove('flash'); void sd.offsetWidth; sd.classList.add('flash');
   }
   renderRun();
@@ -798,7 +1067,9 @@ function renderRun(){
   const seg=R.segs[R.i], blocks=R.session.blocks, n=blocks.length, b=blocks[seg.show], ex=b.ex;
   const leftMs=Math.max(0,seg.dur*1000-R.el), elapsed=seg.cum+(seg.type==='ready'?0:R.el/1000);
   document.body.dataset.phase=seg.type;
-  $('phase').textContent = R.paused ? 'PAUSED' : seg.type==='ready'?'GET READY':seg.type==='work'?'WORK':'REST · NEXT UP';
+  const gapLabel = R.session.kind==='core' ? 'REST · NEXT UP' : 'NEXT UP · GET IN POSITION';
+  const workLabel = R.session.kind==='cooldown' ? 'STRETCH' : R.session.kind==='warmup' ? 'MOVE' : 'WORK';
+  $('phase').textContent = R.paused ? 'PAUSED' : seg.type==='ready'?'GET READY':seg.type==='work'?workLabel:gapLabel;
   $('setNo').textContent=`${seg.show+1} / ${n}`;
   $('totLeft').textContent=fmt(R.total-elapsed);
   $('totEl').textContent=`${fmt(elapsed)} elapsed`;
@@ -812,8 +1083,8 @@ function renderRun(){
   else side.textContent = how.charAt(0).toUpperCase()+how.slice(1);
   const nb=blocks[seg.show+1];
   $('rNext').innerHTML = seg.type==='work'
-    ? (nb?`Next: <b>${nb.ex.name}</b> · ${b.rest}s rest first`:'<b>Final set</b> — finish strong')
-    : seg.type==='rest' ? `${ex.uni?'Each side':'Work'} for <b>${ex.uni?Math.round(b.work/2):b.work}s</b>` : `${n} sets · ${fmt(R.total)} · starts in ${Math.ceil(leftMs/1000)}s`;
+    ? (nb?`Next: <b>${nb.ex.name}</b> · ${b.rest}s ${KIND[R.session.kind].gap} first`:'<b>Last one</b>, finish strong')
+    : seg.type==='rest' ? `${ex.uni?'Each side':'Work'} for <b>${ex.uni?Math.round(b.work/2):b.work}s</b>` : `${n} ${KIND[R.session.kind].unit} · ${fmt(R.total)} · starts in ${Math.ceil(leftMs/1000)}s`;
   document.querySelectorAll('#prog i').forEach((el,k)=>{
     el.className = k<seg.show ? 'done' : (k===seg.show && seg.type==='work' ? 'now' : '');
     if(k===seg.show && seg.type==='work') el.style.setProperty('--p',(100*(1-leftMs/(seg.dur*1000)))+'%');
@@ -831,21 +1102,23 @@ function setPaused(p){
 function finish(){
   R.active=false; clearInterval(R.timer); unlockScreen();
   beep(784,.15); beep(988,.15,.35,.17); beep(1319,.35,.35,.34); buzz([200,100,200,100,400]);
-  say('Workout complete. Nice work.', 700);
+  say([line('p-done-'+R.session.kind)], 700);
   const s=R.session;
-  $('doneTxt').textContent=`${s.blocks.length} sets · ${fmt(s.total)} · ${LEVEL_LABEL[s.level]}. Logged — tomorrow's session will steer away from these exercises.`;
+  const K=KIND[s.kind];
+  $('doneTxt').textContent = s.kind==='core'
+    ? `${s.blocks.length} sets · ${fmt(s.total)} · ${LEVEL_LABEL[s.level]}. Logged, so tomorrow's session will steer away from these exercises.`
+    : `${K.title} · ${s.blocks.length} ${K.unit} · ${fmt(s.total)}. Logged, so next time mixes in different options.`;
   $('run').hidden=true; $('done').hidden=false; document.body.dataset.phase='ready';
   $('again').focus();
 }
-function backToSetup(){
-  R.active=false; clearInterval(R.timer); unlockScreen(); hush();
-  $('run').hidden=true; $('done').hidden=true; $('setup').hidden=false; $('dock').hidden=false;
-  document.body.dataset.phase='ready'; document.body.dataset.paused='false'; Fig.ex=null; newSession(); $('start').focus();
+function backToHome(){
+  R.active=false; clearInterval(R.timer); unlockScreen(); hush(); Fig.ex=null;
+  showHome();
 }
 
 $('start').onclick=startWorkout;
-$('again').onclick=backToSetup;
-$('bStop').onclick=()=>{ if(confirm('End this workout?')) backToSetup(); };
+$('again').onclick=backToHome;
+$('bStop').onclick=()=>{ if(confirm('End this session?')) backToHome(); };
 $('bPause').onclick=()=>setPaused(!R.paused);
 $('bSkip').onclick=()=>{
   if(!R.active) return;
@@ -875,12 +1148,11 @@ document.addEventListener('keydown',e=>{
 // Called by the TV app's Back button; true means the page handled it
 window.onTvBack = () => {
   if(R.active){ $('bStop').click(); return true; }
-  if(!$('done').hidden){ backToSetup(); return true; }
+  if(!$('done').hidden || !$('setup').hidden){ backToHome(); return true; }
   return false;
 };
 
-newSession();
-$('start').focus({preventScroll:true});
+showHome();
 </script>
 </body>
 </html>
