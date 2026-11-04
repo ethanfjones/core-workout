@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
+import android.speech.tts.Voice;
 import android.view.WindowManager;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
@@ -57,12 +58,37 @@ public class MainActivity extends Activity {
         tts = new TextToSpeech(this, status -> {
             if (status == TextToSpeech.SUCCESS) {
                 tts.setLanguage(Locale.getDefault());
+                Voice best = bestVoice();
+                if (best != null) tts.setVoice(best);
                 ttsReady = true;
             }
         });
 
         web.loadUrl(HOME);
         web.requestFocus();
+    }
+
+    /** Highest-quality installed voice for the TV's language, preferring on-device voices on a tie. */
+    private Voice bestVoice() {
+        try {
+            String lang = Locale.getDefault().getLanguage();
+            Voice best = null;
+            for (Voice v : tts.getVoices()) {
+                if (!lang.equals(v.getLocale().getLanguage())) continue;
+                if (v.getFeatures().contains(TextToSpeech.Engine.KEY_FEATURE_NOT_INSTALLED)) continue;
+                if (best == null || score(v) > score(best)) best = v;
+            }
+            return best;
+        } catch (RuntimeException e) {
+            return null;
+        }
+    }
+
+    private static int score(Voice v) {
+        int s = v.getQuality() * 10 - v.getLatency();
+        if (!v.isNetworkConnectionRequired()) s += 5;
+        if (v.getLocale().equals(Locale.getDefault())) s += 20;
+        return s;
     }
 
     private static boolean isOurs(Uri u) {
@@ -81,12 +107,17 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        web.resumeTimers();
         web.onResume();
     }
 
+    /** Home or another app: pause the workout and stop its timers, so nothing keeps running unseen. */
     @Override
     protected void onPause() {
+        web.evaluateJavascript("window.onTvPause && window.onTvPause()", null);
+        if (ttsReady) tts.stop();
         web.onPause();
+        web.pauseTimers();
         super.onPause();
     }
 
@@ -101,6 +132,13 @@ public class MainActivity extends Activity {
         @JavascriptInterface
         public void speak(String text) {
             if (ttsReady) tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, "cue");
+        }
+
+        @JavascriptInterface
+        public void speakAt(String text, float rate) {
+            if (!ttsReady) return;
+            tts.setSpeechRate(rate);
+            tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, "cue");
         }
 
         @JavascriptInterface
