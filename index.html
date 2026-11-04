@@ -601,7 +601,9 @@ function figLoop(now){
 requestAnimationFrame(figLoop);
 
 // ---------- setup screen ----------
-const S = {level: store.get('runnerCore.level')||'easy', len: +store.get('runnerCore.len')||10, session:null};
+// Levels shifted up in v2 (new Easy = old Moderate), so the saved level uses a new key and starts on Easy
+const LEVEL_KEY = 'runnerCore.level.v2';
+const S = {level: store.get(LEVEL_KEY)||'easy', len: +store.get('runnerCore.len')||10, session:null};
 if(!RATIO[S.level]) S.level='easy';
 if(!LENGTHS[S.len]) S.len=10;
 
@@ -640,7 +642,7 @@ function renderSetup(){
 function newSession(){ S.session = generate(S.level, S.len); renderSetup(); window.scrollTo(0,0); }
 
 document.querySelectorAll('#levels button').forEach(b=>b.onclick=()=>{
-  S.level=b.dataset.v; store.set('runnerCore.level',S.level); newSession();
+  S.level=b.dataset.v; store.set(LEVEL_KEY,S.level); newSession();
 });
 document.querySelectorAll('#lens button').forEach(b=>b.onclick=()=>{
   S.len=+b.dataset.v; store.set('runnerCore.len',S.len); newSession();
