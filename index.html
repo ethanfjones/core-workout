@@ -11,6 +11,8 @@
   --bg:#0e1116;--card:#171c24;--card2:#1e2530;--text:#eef1f5;--muted:#9aa4b2;--line:#2a3342;
   --work:#3ddc97;--rest:#4ea8ff;--ready:#ffb454;--danger:#ff6b6b;--accent:#3ddc97;--on-accent:#06251a;
   --fig:#e8edf3;--fig-far:#5f6b7a;--move:#3ddc97;--mat:#2a3342;
+  --skin:#e2ae8c;--skin2:#b98a6c;--shirt:#2fb385;--shirt2:#1f7d5d;--shorts:#46506a;--shorts2:#323a4e;
+  --shoe:#e9edf2;--shoe2:#a9b2be;--hair:#3a2a22;--eye:#2a1d17;
   --c-ext:#ff8a65;--c-rot:#b794f6;--c-lat:#4dd0e1;--c-hip:#f6c85f;--c-fin:#ff6b9d;
 }
 @media (prefers-color-scheme: light){
@@ -18,6 +20,7 @@
     --bg:#f4f6f9;--card:#ffffff;--card2:#eef1f6;--text:#12161c;--muted:#5b6574;--line:#dde3ec;
     --work:#0f9d65;--rest:#1f78d1;--ready:#c77f00;--danger:#d63b3b;--accent:#0f9d65;--on-accent:#ffffff;
     --fig:#1b222c;--fig-far:#a3adbb;--move:#0f9d65;--mat:#dde3ec;
+    --shorts:#3b4558;--shorts2:#56607a;--shoe:#59616d;--shoe2:#8a939f;
     --c-ext:#d4552b;--c-rot:#7a4fd1;--c-lat:#0b8da0;--c-hip:#a8780a;--c-fin:#cc3a73;
   }
 }
@@ -144,9 +147,10 @@ body[data-paused=true] #setTime{opacity:.45}
 
 /* ---------- diagrams ---------- */
 svg line{stroke-linecap:round}
-svg .fg{stroke:var(--fig)}svg .bk{stroke:var(--fig-far)}
-svg .mv{stroke:var(--move)}svg .mvf{stroke:var(--move);opacity:.5}
-svg .head{fill:var(--fig)}svg .eye{fill:var(--card)}
+svg .sk{fill:var(--skin)}svg .sk2{fill:var(--skin2)}svg .sh{fill:var(--shirt)}svg .sh2{fill:var(--shirt2)}
+svg .so{fill:var(--shorts)}svg .so2{fill:var(--shorts2)}svg .ft{fill:var(--shoe)}svg .ft2{fill:var(--shoe2)}
+svg .hair{fill:var(--hair)}svg .eye{fill:var(--eye)}svg .glow{fill:var(--move);opacity:.35}
+svg .ghost{opacity:.18}
 svg .mat{fill:var(--mat)}
 svg .prop{stroke:var(--fig-far);stroke-linecap:round;opacity:.7}svg .propf{fill:var(--fig-far);opacity:.35}
 svg .arrow{fill:none;stroke:var(--move);stroke-width:2.5;stroke-dasharray:5 4;opacity:.9}
@@ -730,9 +734,32 @@ const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 // ---------- diagram rendering ----------
 const dist = (u,v) => Math.hypot(u[0]-v[0],u[1]-v[1]);
 const n1 = v => v.toFixed(1);
-const seg = (u,v,w,c) => `<line class="${c}" x1="${n1(u[0])}" y1="${n1(u[1])}" x2="${n1(v[0])}" y2="${n1(v[1])}" stroke-width="${w}"/>`;
-const arm = (s,a,c) => seg(s,a[0],9,c)+seg(a[0],a[1],8,c);
-const leg = (p,l,c) => seg(p,l[0],11,c)+seg(l[0],l[1],9,c);
+// A body segment as a tapered capsule: width wa at u, wb at v
+function cap(u,v,wa,wb,c){
+  const dx=v[0]-u[0], dy=v[1]-u[1], L=Math.hypot(dx,dy)||1, nx=-dy/L, ny=dx/L, ra=wa/2, rb=wb/2;
+  return `<path class="${c}" d="M${n1(u[0]+nx*ra)},${n1(u[1]+ny*ra)}L${n1(v[0]+nx*rb)},${n1(v[1]+ny*rb)}L${n1(v[0]-nx*rb)},${n1(v[1]-ny*rb)}L${n1(u[0]-nx*ra)},${n1(u[1]-ny*ra)}Z"/>`
+    + `<circle class="${c}" cx="${n1(u[0])}" cy="${n1(u[1])}" r="${ra}"/><circle class="${c}" cx="${n1(v[0])}" cy="${n1(v[1])}" r="${rb}"/>`;
+}
+const along = (u,v,t) => [u[0]+(v[0]-u[0])*t, u[1]+(v[1]-u[1])*t];
+// far: the limb on the far side of the body (a shade darker); glow: it is the limb that moves
+function armSVG(s,a,far,glow){
+  const k = far ? '2' : '', [e,h] = a;
+  return (glow ? cap(s,e,15,13,'glow')+cap(e,h,13,11,'glow') : '')
+    + cap(s,e,9,7,'sk'+k) + cap(e,h,7,5.5,'sk'+k) + `<circle class="sk${k}" cx="${n1(h[0])}" cy="${n1(h[1])}" r="3.6"/>`
+    + cap(s,along(s,e,.45),10.5,9.5,'sh'+k);
+}
+function legSVG(p,l,far,glow,face){
+  const k = far ? '2' : '', [kn,ft] = l;
+  // toes point perpendicular to the shin, on the side the figure faces
+  const dx=ft[0]-kn[0], dy=ft[1]-kn[1], L=Math.hypot(dx,dy)||1;
+  let tx=-dy/L, ty=dx/L;
+  if(tx*face[0]+ty*face[1] < 0 || (tx*face[0]+ty*face[1]===0 && ty>0)){ tx=-tx; ty=-ty; }
+  const toe=[ft[0]+tx*8, ft[1]+ty*8];
+  return (glow ? cap(p,kn,20,16,'glow')+cap(kn,ft,16,12,'glow') : '')
+    + cap(p,kn,14,10,'sk'+k) + cap(kn,ft,10,6.5,'sk'+k)
+    + cap(along(kn,ft,.82),ft,7.5,7.5,'ft'+k) + cap(ft,toe,7,5,'ft'+k)
+    + cap(p,along(p,kn,.5),15.5,12.5,'so'+k);
+}
 const MAT = '<rect class="mat" x="4" y="110" width="232" height="6" rx="3"/>';
 const HOLD = '<g class="badge"><rect x="190" y="-4" width="44" height="17" rx="8.5"/><text x="212" y="8" text-anchor="middle">HOLD</text></g>';
 
@@ -771,16 +798,27 @@ function props(p){
   if(p.couch) s += '<rect class="propf" x="152" y="74" width="84" height="36" rx="6"/><rect class="propf" x="212" y="34" width="24" height="76" rx="6"/>';
   return s;
 }
-function figMarkup(p, m){
-  const c = k => m.mv[k] ? (k.endsWith('2')?'mvf':'mv') : (k.endsWith('2')?'bk':'fg');
-  let eye = '';
-  if(p.f!=null){ const t=p.f*Math.PI/180; eye=`<circle class="eye" cx="${n1(p.h[0]+Math.cos(t)*5)}" cy="${n1(p.h[1]+Math.sin(t)*5)}" r="2.6"/>`; }
-  const torso = p.m ? seg(p.s,p.m,15,'fg')+seg(p.m,p.p,15,'fg') : seg(p.s,p.p,15,'fg');
-  const body = props(p) + m.arrow
-    + arm(p.s,p.a2,c('a2')) + leg(p.p,p.l2,c('l2'))
-    + seg(p.h,p.s,8,'fg') + torso
-    + `<circle class="head" cx="${n1(p.h[0])}" cy="${n1(p.h[1])}" r="10"/>` + eye
-    + leg(p.p,p.l,c('l')) + arm(p.s,p.a,c('a'));
+function personSVG(p, m){
+  const g = k => !!m.mv[k];
+  const face = p.f!=null ? [Math.cos(p.f*Math.PI/180), Math.sin(p.f*Math.PI/180)] : [0,0];
+  const toeDir = p.f!=null ? face : [-1,0];
+  // torso: chest at the shoulders tapering to the waist, shorts over the hips
+  const mid = p.m || along(p.s,p.p,.5);
+  const torso = cap(p.s,mid,20,17,'sh') + cap(mid,along(mid,p.p,.75),17,16,'sh') + cap(along(mid,p.p,.7),p.p,16,17,'so');
+  const neck = cap(p.h,p.s,7,8,'sk');
+  // head: hair at the back (or top, for front-facing figures), face toward the facing direction
+  const back = p.f!=null ? [-face[0]*2.2, -face[1]*2.2-1] : [0,-2.2];
+  const head = `<circle class="hair" cx="${n1(p.h[0]+back[0])}" cy="${n1(p.h[1]+back[1])}" r="10"/>`
+    + `<circle class="sk" cx="${n1(p.h[0]+face[0]*1.4)}" cy="${n1(p.h[1]+face[1]*1.4+(p.f!=null?0:1.2))}" r="8.6"/>`
+    + (p.f!=null ? `<circle class="eye" cx="${n1(p.h[0]+face[0]*6+face[1]*-1.5)}" cy="${n1(p.h[1]+face[1]*6-1.5)}" r="1.5"/>` : '');
+  return armSVG(p.s,p.a2,true,g('a2')) + legSVG(p.p,p.l2,true,g('l2'),toeDir)
+    + neck + torso + head
+    + legSVG(p.p,p.l,false,g('l'),toeDir) + armSVG(p.s,p.a,false,g('a'));
+}
+// ghost: also draw the end position faintly (used for the still thumbnails)
+function figMarkup(p, m, ghost){
+  const end = ghost ? `<g class="ghost">${personSVG(ghost, {mv:{}})}</g>` : '';
+  const body = props(p) + end + m.arrow + personSVG(p, m);
   return MAT + (p.z ? `<g transform="translate(120 110) scale(${p.z}) translate(-120 -110)">${body}</g>` : body) + (m.hold ? HOLD : '');
 }
 function lerpPose(A,B,t){
@@ -843,7 +881,7 @@ function renderSetup(){
   $('summary').innerHTML = `<span><b>${s.blocks.length}</b> ${K.unit} · <b>${fmt(s.total)}</b> total</span><span>${fmt(work)} work · ${fmt(s.total-work)} ${K.gap}</span>`;
   $('list').innerHTML = s.blocks.map((b,i)=>`
     <li class="item">
-      <svg viewBox="0 -8 240 128" aria-hidden="true">${figMarkup(b.ex.pose[0], b.ex.meta)}</svg>
+      <svg viewBox="0 -8 240 128" aria-hidden="true">${figMarkup(b.ex.pose[0], b.ex.meta, b.ex.pose[1])}</svg>
       <div>
         <div class="n">${i+1}. ${b.ex.name}</div>
         <div class="meta"><span class="chip cat-${b.ex.cat}">${CATS[b.ex.cat].label}</span><span>${describe(b)}</span></div>
@@ -854,7 +892,7 @@ function renderSetup(){
 function newSession(){ S.session = generate(S.kind, S.level, S.len); renderSetup(); window.scrollTo(0,0); }
 
 function renderHome(){
-  document.querySelectorAll('#cards svg[data-icon]').forEach(svg=>{ const ex=byId[svg.dataset.icon]; svg.innerHTML=figMarkup(ex.pose[0], ex.meta); });
+  document.querySelectorAll('#cards svg[data-icon]').forEach(svg=>{ const ex=byId[svg.dataset.icon]; svg.innerHTML=figMarkup(ex.pose[0], ex.meta, ex.pose[1]); });
   const h=loadHistory();
   $('foot').innerHTML = h.length
     ? `${h.length} session${h.length>1?'s':''} remembered · last: ${new Date(h[0].t).toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'})} <button id="clr">clear</button>`
